@@ -1,0 +1,52 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+enum MaterialStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+
+model User{
+  id Int @default(autoincrement()) @id
+  email String @unique
+  name String?
+  role Role @default(USER)
+  password String?
+  image String?
+  publicId String?
+  otp       String?      
+  otpExpiry DateTime?  
+  materials Material[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now()) 
+}
+
+model Material {
+  id          Int             @id @default(autoincrement())
+  title       String
+  description String?
+  fileUrl     String
+  fileType    String
+  publicId    String?
+  class       String
+  subject     String
+  type        String?
+  status      MaterialStatus  @default(PENDING)
+  uploadedBy  User            @relation(fields: [uploadedById], references: [id])
+  uploadedById Int
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+}
