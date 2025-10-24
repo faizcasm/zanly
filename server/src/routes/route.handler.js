@@ -6,8 +6,7 @@ import cloudinary from '../config/cloudinary.config.js';
 import prisma from '../config/db.config.js';
 import logger from '../config/logger.config.js';
 import { upload } from '../config/multer.config.js';
-import redisClient from '../config/redis.config.js';
-
+import jobQueue from '../config/queue.config.js';
 //middlewares
 import { authMiddleware } from '../middlewares/auth.middleware.js';
 import errorHandler from '../middlewares/error.handler.middleware.js';
@@ -33,6 +32,7 @@ import {
   getUser,
   forgotPassword,
   resetPassword,
+  changePassword,
 } from '../controllers/user.controller.js';
 
 //admin-controllers
@@ -46,6 +46,10 @@ import {
   rejectMaterial,
   getAllMaterials,
   getMaterialById,
+  addNotification,
+  getNotifications,
+  cleanupExpiredNotifications,
+  clearCache,
 } from '../controllers/admin.controller.js';
 
 //student-controls
@@ -55,6 +59,17 @@ import {
   searchMaterials,
   filterMaterials,
 } from '../controllers/student.controller.js';
+
+//AI-ZANLY-AI
+import { zanlyAi } from '../config/gemini.config.js';
+import zanlyAiController from '../controllers/zanly.ai.controlller.js';
+
+//bookmarks
+import {
+  addBookmark,
+  removeBookmark,
+  getMyBookmarks,
+} from '../controllers/bookmark.controller.js';
 export {
   //app
   app,
@@ -64,7 +79,7 @@ export {
   prisma,
   logger,
   upload,
-  redisClient,
+  jobQueue,
   //middlewares
   authMiddleware,
   errorHandler,
@@ -90,6 +105,7 @@ export {
   getUser,
   forgotPassword,
   resetPassword,
+  changePassword,
 
   //admin-controllers
   getAllUsers,
@@ -101,10 +117,24 @@ export {
   rejectMaterial,
   getAllMaterials,
   getMaterialById,
+  clearCache,
+  //app-notifications
+  addNotification,
+  getNotifications,
+  cleanupExpiredNotifications,
 
   //student-controls
   getMaterials,
   uploadMaterial,
   searchMaterials,
   filterMaterials,
+
+  //zanly-Ai
+  zanlyAi,
+  zanlyAiController,
+
+  //bookmarks
+  addBookmark,
+  removeBookmark,
+  getMyBookmarks,
 };

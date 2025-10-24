@@ -1,38 +1,33 @@
-# syntax=docker/dockerfile:1
+# ---------- Stage 1: Base ----------
+FROM node:20
 
-# Comments are provided throughout this file to help you get started.
-# If you need more help, visit the Dockerfile reference guide at
-# https://docs.docker.com/go/dockerfile-reference/
-
-# Want to help us make this template better? Share your feedback here: https://forms.gle/ybq9Krt8jtBL3iCk7
-
-ARG NODE_VERSION=23.11.0
-
-FROM node:${NODE_VERSION}-alpine
-
-# Use production node environment by default.
-ENV NODE_ENV production
-
-
+# Set working directory
 WORKDIR /usr/src/app
 
-# Download dependencies as a separate step to take advantage of Docker's caching.
-# Leverage a cache mount to /root/.npm to speed up subsequent builds.
-# Leverage a bind mounts to package.json and package-lock.json to avoid having to copy them into
-# into this layer.
-RUN --mount=type=bind,source=package.json,target=package.json \
-    --mount=type=bind,source=package-lock.json,target=package-lock.json \
-    --mount=type=cache,target=/root/.npm \
-    npm ci --omit=dev
+# Copy package.json and package-lock.json first (for caching)
+COPY package*.json ./
 
-# Run the application as a non-root user.
-USER node
+# Install dependencies (including cross-env locally)
+RUN npm install --production
 
-# Copy the rest of the source files into the image.
+# Copy the rest of the application code
 COPY . .
 
-# Expose the port that the application listens on.
-EXPOSE 3000
+# Generate Prisma client
+RUN npx prisma generate
 
-# Run the application.
-CMD node index.js
+# Expose backend port
+EXPOSE 4000
+
+# Set environment variable for production
+ENV NODE_ENV=production
+
+# Install bash and curl for wait-for-it
+RUN apt-get update && apt-get install -y bash curl && rm -rf /var/lib/apt/lists/*
+
+# Copy entrypoint script
+COPY entrypoint.sh /usr/src/app/entrypoint.sh
+RUN chmod +x /usr/src/app/entrypoint.sh
+
+# Start command: wait for Postgres, then run app
+CMD ["/bin/bash", "/usr/src/app/entrypoint.sh", "postgres:5432", "--", "npm", "run", "prod"]

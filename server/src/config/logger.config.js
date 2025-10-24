@@ -1,5 +1,7 @@
 import { createLogger, transports, format } from 'winston';
 import 'winston-daily-rotate-file';
+import LokiTransport from 'winston-loki';
+
 
 const dailyRotateFileTransport = new transports.DailyRotateFile({
   filename: 'logs/%DATE%-combined.log',
@@ -26,6 +28,11 @@ const logger = createLogger({
     new transports.Console(),
     dailyRotateFileTransport,
     errorRotateFileTransport,
+    new LokiTransport({
+      host: 'http://192.168.1.9:3100', // Loki container in Docker network
+      json: true,
+      labels: { app: 'nodejs_app' }
+    }),
   ],
 });
 

@@ -1,0 +1,15 @@
+{"code":"ECONNREFUSED","level":"error","message":"Redis error","stack":"AggregateError [ECONNREFUSED]: \n    at internalConnectMultiple (node:net:1134:18)\n    at afterConnectMultiple (node:net:1715:7)","timestamp":"2025-10-19T09:10:37.830Z"}
+{"code":"ECONNREFUSED","level":"error","message":"Redis error","stack":"AggregateError [ECONNREFUSED]: \n    at internalConnectMultiple (node:net:1134:18)\n    at afterConnectMultiple (node:net:1715:7)","timestamp":"2025-10-19T09:10:38.051Z"}
+{"code":"ECONNREFUSED","level":"error","message":"Redis error","stack":"AggregateError [ECONNREFUSED]: \n    at internalConnectMultiple (node:net:1134:18)\n    at afterConnectMultiple (node:net:1715:7)","timestamp":"2025-10-19T09:10:38.244Z"}
+{"code":"ECONNREFUSED","level":"error","message":"Redis error","stack":"AggregateError [ECONNREFUSED]: \n    at internalConnectMultiple (node:net:1134:18)\n    at afterConnectMultiple (node:net:1715:7)","timestamp":"2025-10-19T09:10:38.535Z"}
+{"code":"ECONNREFUSED","level":"error","message":"Redis error","stack":"AggregateError [ECONNREFUSED]: \n    at internalConnectMultiple (node:net:1134:18)\n    at afterConnectMultiple (node:net:1715:7)","timestamp":"2025-10-19T09:10:38.956Z"}
+{"code":"ECONNREFUSED","level":"error","message":"Redis error","stack":"AggregateError [ECONNREFUSED]: \n    at internalConnectMultiple (node:net:1134:18)\n    at afterConnectMultiple (node:net:1715:7)","timestamp":"2025-10-19T09:10:39.855Z"}
+{"code":"ECONNREFUSED","level":"error","message":"Redis error","stack":"AggregateError [ECONNREFUSED]: \n    at internalConnectMultiple (node:net:1134:18)\n    at afterConnectMultiple (node:net:1715:7)","timestamp":"2025-10-19T09:10:41.596Z"}
+{"level":"info","message":"Redis conneted","timestamp":"2025-10-19T09:11:29.946Z"}
+{"level":"info","message":"Database connected","timestamp":"2025-10-19T09:11:29.963Z"}
+{"level":"info","message":"Cron job started: Sending request to http://localhost:4000 every 10 minutes","timestamp":"2025-10-19T09:11:30.032Z"}
+{"level":"info","message":"Server started at port","timestamp":"2025-10-19T09:11:30.034Z"}
+{"level":"info","message":"http://localhost:4000","timestamp":"2025-10-19T09:11:30.035Z"}
+{"level":"info","message":"📊 Metrics available at http://localhost:4000/metrics","timestamp":"2025-10-19T09:11:30.035Z"}
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-19T09:20:00.068Z"}
+{"level":"info","message":"Redis conneted","timestamp":"2025-10-19T09:28:41.104Z"}

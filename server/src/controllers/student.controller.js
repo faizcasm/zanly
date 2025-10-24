@@ -1,14 +1,16 @@
 import {
   prisma,
-  redisClient,
   logger,
   AppError,
   cloudinary,
 } from '../routes/route.handler.js';
-
+import redisClient from '../config/redis.config.js';
+import mime from 'mime-types';
+import fs from 'fs';
 const uploadMaterial = async (req, res, next) => {
   const { title, description, class: className, subject, type } = req.body;
   const file = req.file;
+  console.log(file);
 
   if (!title || !className || !subject || !type || !file) {
     return next(
@@ -19,11 +21,18 @@ const uploadMaterial = async (req, res, next) => {
   if (file.size > 10 * 1024 * 1024)
     return next(new AppError('File size cannot exceed 10MB', 400));
 
+  const mimeType = file.mimetype || mime.lookup(file.originalname);
+  // 2️⃣ Choose correct resource type
+  let resourceType = 'raw';
+  if (mimeType?.startsWith('image/')) resourceType = 'image';
+  else if (mimeType?.startsWith('video/')) resourceType = 'video';
+  else resourceType = 'raw'; // default for pdf, docs, zips, etc.
   const cloudResult = await cloudinary.uploader.upload(file.path, {
     folder: 'study_materials',
-    resource_type: 'auto',
+    resource_type: resourceType,
+    format: mimeType.split('/')[1],
   });
-
+  fs.unlinkSync(file.path);
   const material = await prisma.material.create({
     data: {
       title,

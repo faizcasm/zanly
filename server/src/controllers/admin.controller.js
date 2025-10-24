@@ -3,9 +3,8 @@ import {
   AppError,
   hashPassword,
   logger,
-  redisClient,
 } from '../routes/route.handler.js';
-
+import redisClient from '../config/redis.config.js';
 const getAllUsers = async (req, res, next) => {
   const { page = 1, limit = 10 } = req.query;
   const skip = (parseInt(page) - 1) * parseInt(limit);
@@ -43,7 +42,9 @@ const getAllUsers = async (req, res, next) => {
     totalPages,
     total,
   };
-
+  if (!response) {
+    return next(new AppError('Something went wrong', 400));
+  }
   await redisClient.setEx(cacheKey, 300, JSON.stringify(response));
 
   logger.info(`Fetched users page ${page} from DB`);
@@ -182,7 +183,7 @@ const getAllMaterials = async (req, res, next) => {
   if (className) where.class = className;
   if (subject) where.subject = subject;
   if (status) where.status = status;
-  else where.status = 'APPROVED';
+  else where.status = 'PENDING';
 
   const [materials, total] = await prisma.$transaction([
     prisma.material.findMany({
@@ -201,7 +202,9 @@ const getAllMaterials = async (req, res, next) => {
     total,
     materials,
   };
-
+  if (!response) {
+    return next(new AppError('Something went wrong', 400));
+  }
   await redisClient.setEx(cacheKey, 300, JSON.stringify(response));
 
   logger.info(`Fetched materials page ${page} from DB`);
@@ -221,6 +224,93 @@ const getMaterialById = async (req, res, next) => {
   res.status(200).json({ message: 'Material fetched successfully', material });
 };
 
+//notifications
+const addNotification = async (req, res, next) => {
+  const { title, description } = req.body;
+
+  if (!title || !description) {
+    return next(new AppError('Title and description are required', 400));
+  }
+
+  const notification = await prisma.notification.create({
+    data: {
+      title,
+      description,
+      expiresAt: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000),
+    },
+  });
+  await redisClient.del('notifications');
+
+  res.status(201).json({
+    status: 'success',
+    data: notification,
+  });
+};
+
+const getNotifications = async (req, res, next) => {
+  if (!req?.user?.id) {
+    return next(new AppError('Unauthorized', 401));
+  }
+  const cached = await redisClient.get('notifications');
+  if (cached) {
+    return res.status(200).json({
+      status: 'success',
+      data: JSON.parse(cached),
+      cached: true,
+    });
+  }
+
+  const notifications = await prisma.notification.findMany({
+    where: {
+      expiresAt: {
+        gte: new Date(),
+      },
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
+
+  if (!notifications) {
+    return next(new AppError('No notifications', 400));
+  }
+  await redisClient.set(
+    'notifications',
+    JSON.stringify(notifications),
+    'EX',
+    3600,
+  );
+
+  res.status(200).json({
+    status: 'success',
+    data: notifications,
+    cached: false,
+  });
+};
+
+const cleanupExpiredNotifications = async (req, res, next) => {
+  if (!req?.user?.id) {
+    return next(new AppError('Unauthorized', 401));
+  }
+  await prisma.notification.deleteMany({
+    where: {
+      expiresAt: {
+        lt: new Date(),
+      },
+    },
+  });
+  await redisClient.del('notifications');
+
+  res.status(200).json({ message: 'Notifications delete' });
+};
+const clearCache = async (req, res, next) => {
+  if (!req?.user?.id) {
+    return next(new AppError('Unauthorized', 401));
+  }
+  await redisClient.flushDb();
+  res.status(200).json({ message: 'Redis Cache Cleared' });
+};
+
 export {
   getAllUsers,
   getUserById,
@@ -231,4 +321,8 @@ export {
   rejectMaterial,
   getAllMaterials,
   getMaterialById,
+  addNotification,
+  getNotifications,
+  cleanupExpiredNotifications,
+  clearCache,
 };

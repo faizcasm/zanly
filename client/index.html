@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zanly - Smart Study Materials & AI-Powered Learning Platform</title>
+    <meta name="description" content="Transform your learning with Zanly's AI-powered study materials, interactive notes, and personalized learning paths. Join 50,000+ students achieving academic success." />
+    <meta name="author" content="Zanly" />
+    <meta name="keywords" content="study materials, AI learning, online education, interactive notes, student platform, academic success" />
+
+    <meta property="og:title" content="Zanly - Smart Study Materials & AI-Powered Learning" />
+    <meta property="og:description" content="Transform your learning with AI-powered study materials and personalized learning paths. Join 50,000+ students achieving success." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/vite.svg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="" />
+    <meta name="twitter:image" content="" />
+    <link rel="icon" href="/zanly-icon.ico" type="image/ico" />
+    <script>
+      /* Persist dark mode before React mounts to avoid FOUC */
+      (function() {
+        try {
+          var saved = localStorage.getItem('zanly-theme');
+          var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var shouldDark = saved ? (saved === 'dark' || (saved === 'system' && systemDark)) : systemDark;
+          if (shouldDark) document.documentElement.classList.add('dark');
+          else document.documentElement.classList.remove('dark');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

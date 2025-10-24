@@ -4,7 +4,9 @@ export const generateToken = (user) => {
     throw new Error('Invalid user object for token generation');
   }
   const expiry = process.env.JWT_EXPIRY || '7d';
-  return jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, {
+  const JWT_SECRET =  process.env.JWT_SECRET;
+  const token = jwt.sign({ id: user.id, role: user.role },JWT_SECRET, {
     expiresIn: expiry,
   });
+  return token;
 };

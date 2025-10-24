@@ -6,9 +6,59 @@
     "auditLog": "logs\\.8533a6ecde8457edd6e850bf625b82bdd770c490-audit.json",
     "files": [
         {
-            "date": 1758534395073,
-            "name": "logs\\2025-09-22-combined.log",
-            "hash": "ceaf9410ed5553d47c4950d962e7b9709ce4883dd029aa3d63a2303eb6b88b29"
+            "date": 1759212488956,
+            "name": "logs\\2025-09-29-combined.log",
+            "hash": "1cd95bc8ec17656886dbcf1ec1894c46e98e85239818c4d13a94aec417354b7d"
+        },
+        {
+            "date": 1759219200053,
+            "name": "logs\\2025-09-30-combined.log",
+            "hash": "942690b060b38f68e0e44d3f28e27b8b5bfced97b0fda790b5018b55886672af"
+        },
+        {
+            "date": 1759305600063,
+            "name": "logs\\2025-10-01-combined.log",
+            "hash": "a9a9ff63b63f67930d608c7fcdba57b38b588fdd4970f1654f914b5a19dd163d"
+        },
+        {
+            "date": 1759394460673,
+            "name": "logs\\2025-10-02-combined.log",
+            "hash": "f0b8be71a607c7b6609fb9b7a5e99d9f5c998460f307af0ffb994972a38e6f2e"
+        },
+        {
+            "date": 1759478400188,
+            "name": "logs\\2025-10-03-combined.log",
+            "hash": "2dc4692ee049b2a80fb9855866051e51de38b08a6237782c62d3cbe78435ad7a"
+        },
+        {
+            "date": 1759564800113,
+            "name": "logs\\2025-10-04-combined.log",
+            "hash": "7315a26c9aca40ddd13eb223fadaed05633522be09850ebac535b76db1892aa0"
+        },
+        {
+            "date": 1759651200065,
+            "name": "logs\\2025-10-05-combined.log",
+            "hash": "fde0d7dc7ff6125296de036d6d8f003c343b2a7b48821064ee984ca3faf28d7c"
+        },
+        {
+            "date": 1759737600323,
+            "name": "logs\\2025-10-06-combined.log",
+            "hash": "0a715b7f05edaecfde107f28b6e25d010f2a2c70c0116d4b04ee8250c09a8821"
+        },
+        {
+            "date": 1759828124320,
+            "name": "logs\\2025-10-07-combined.log",
+            "hash": "f8c1592cec01080e0ca555e848a39589086e08a6da16970a904e2066d6b92e78"
+        },
+        {
+            "date": 1759910400035,
+            "name": "logs\\2025-10-08-combined.log",
+            "hash": "c28073c1a7dd8a94498fbc1c6e9371b5d9f2baedf5782712161d3f596523fd9f"
+        },
+        {
+            "date": 1759998141899,
+            "name": "logs\\2025-10-09-combined.log",
+            "hash": "477209b076229694bbd1ff49319f3f4e817262deb5a358b9936c45fc4a37e10c"
         }
     ],
     "hashType": "sha256"

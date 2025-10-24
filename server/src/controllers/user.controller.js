@@ -5,18 +5,19 @@ import {
   generateToken,
   hashPassword,
   prisma,
-  sendMail,
   verifyPassword,
-  redisClient,
+  jobQueue,
   logger,
   cookieOptions,
 } from '../routes/route.handler.js';
 import fs from 'fs';
-
+import redisClient from '../config/redis.config.js';
 const SignUp = async (req, res, next) => {
   const { email, name, password } = req.body;
-  if (!email || !name || !password)
+  
+  if (!email || !name || !password) {
     return next(new AppError('All fields are required', 400));
+  }
 
   const existingUser = await prisma.user.findUnique({ where: { email } });
   if (existingUser) return next(new AppError('User already exists', 400));
@@ -30,7 +31,11 @@ const SignUp = async (req, res, next) => {
   });
 
   await redisClient.setEx(`user:${user.id}`, 300, JSON.stringify(user));
-
+  await jobQueue.add('sendWelcomeEmail', {
+    to: email,
+    name:user.name,
+    emailType:'Signup'
+  });
   logger.info(`New user signed up: ${user.email}`);
   res.status(200).json({ message: 'Signup complete', user });
 };
@@ -39,12 +44,10 @@ const Login = async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password)
     return next(new AppError('All fields are required', 400));
-
   const user = await prisma.user.findUnique({ where: { email } });
   if (!user) return next(new AppError('Invalid email or password', 400));
-
   const isValid = await verifyPassword(password, user.password);
-  if (!isValid) return next(new AppError('Invalid email or password', 400));
+  if (!isValid) return next(new AppError('Invalid password', 400));
 
   const token = generateToken(user);
   res.cookie('token', token, cookieOptions);
@@ -152,7 +155,12 @@ const forgotPassword = async (req, res, next) => {
     data: { otp, otpExpiry: expiry },
   });
 
-  await sendMail({ Otp: otp, email: user.email, name: user.name });
+  await jobQueue.add('sendWelcomeEmail', {
+    to: email,
+    name:user.name,
+    emailType:'RESET PASSWORD',
+    Otp:otp
+  });
 
   logger.info(`OTP sent for password reset: ${user.email}`);
   res.status(200).json({ message: 'OTP sent to your email' });
@@ -179,6 +187,39 @@ const resetPassword = async (req, res, next) => {
   res.status(200).json({ message: 'Password reset successfully' });
 };
 
+const changePassword = async (req, res, next) => {
+  const { currentPassword, newPassword } = req.body;
+  const userId = parseInt(req?.user?.id);
+  const user = await prisma.user.findUnique({ where: { id: userId } });
+  if (!user) return next(new AppError('Unauthorized', 401));
+  const verifiedPassword = await verifyPassword(currentPassword, user.password);
+  if (!verifiedPassword) {
+    return next(new AppError('Invalid password', 401));
+  }
+
+  const hashedPassword = newPassword
+    ? await hashPassword(newPassword)
+    : user.password;
+
+  const updatedPassword = await prisma.user.update({
+    where: { id: userId },
+    data: {
+      password: hashedPassword,
+    },
+  });
+
+  await redisClient.setEx(
+    `user:${userId}`,
+    300,
+    JSON.stringify(updatedPassword),
+  );
+
+  logger.info(`User Password updated: ${updatedPassword.email}`);
+  res.status(200).json({
+    message: 'User password updated successfully',
+    user: updatedPassword,
+  });
+};
 export {
   SignUp,
   Login,
@@ -188,4 +229,5 @@ export {
   deleteAccount,
   forgotPassword,
   resetPassword,
+  changePassword,
 };

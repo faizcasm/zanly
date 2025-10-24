@@ -30,10 +30,10 @@ model User{
   otp       String?      
   otpExpiry DateTime?  
   materials Material[]
+  bookmarks Bookmark[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt @default(now()) 
 }
-
 model Material {
   id          Int             @id @default(autoincrement())
   title       String
@@ -46,7 +46,29 @@ model Material {
   type        String?
   status      MaterialStatus  @default(PENDING)
   uploadedBy  User            @relation(fields: [uploadedById], references: [id])
+  searchVector Unsupported("tsvector")?  
   uploadedById Int
   createdAt   DateTime        @default(now())
   updatedAt   DateTime        @updatedAt
+  bookmarks Bookmark[]
+}
+
+model Bookmark {
+  id         Int      @id @default(autoincrement())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     Int
+  material   Material @relation(fields: [materialId], references: [id])
+  materialId Int
+  createdAt  DateTime @default(now())
+
+  @@unique([userId, materialId]) 
+}
+
+model Notification{
+  id Int @id @default(autoincrement())
+  title String
+  description String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now()) 
+  expiresAt   DateTime
 }

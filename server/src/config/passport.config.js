@@ -7,6 +7,7 @@ import {
   logger,
   generateToken,
   cookieOptions,
+  jobQueue,
 } from '../routes/route.handler.js';
 // ---------------- Passport Serialization ----------------
 passport.serializeUser((user, done) => done(null, user));
@@ -65,10 +66,8 @@ const oauthCallback = async (req, res, next) => {
   });
 
   let savedUser;
-  let message;
   if (existingUser) {
     savedUser = existingUser;
-    message = 'Login successful';
     logger.info('OAuth login for existing user', user);
   } else {
     savedUser = await prisma.user.create({
@@ -78,23 +77,20 @@ const oauthCallback = async (req, res, next) => {
         image: user.image,
       },
     });
-    message = 'Account created and login successful';
     logger.info('OAuth new user created', savedUser);
   }
 
   const token = await generateToken(savedUser);
-
-  res.cookie('token', token, cookieOptions);
-
-  res.status(200).json({
-    message,
-    user: {
-      id: savedUser.id,
-      name: savedUser.name,
-      email: savedUser.email,
-      image: savedUser.image,
-    },
+  await jobQueue.add('sendWelcomeEmail', {
+    to: savedUser.email,
+    name:savedUser.name,
+    emailType:'Login'
   });
+  res.cookie('token', token, cookieOptions);
+  if (savedUser.role === 'ADMIN') {
+    res.redirect(`${process.env.CORS_ORIGIN}/admin`);
+  }
+  res.redirect(`${process.env.CORS_ORIGIN}/dashboard`);
 };
 
 export { oauthCallback, passport };

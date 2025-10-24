@@ -1,0 +1,41 @@
+{"level":"info","message":"Redis conneted","timestamp":"2025-10-13T07:23:29.108Z"}
+{"level":"info","message":"Database connected","timestamp":"2025-10-13T07:23:29.122Z"}
+{"level":"info","message":"Cron job started: Sending request to http://localhost:4000 every 10 minutes","timestamp":"2025-10-13T07:23:29.183Z"}
+{"level":"info","message":"Server started at port","timestamp":"2025-10-13T07:23:29.183Z"}
+{"level":"info","message":"http://localhost:4000","timestamp":"2025-10-13T07:23:29.184Z"}
+{"level":"info","message":"User data fetched: faizanhameed690@gmail.com","timestamp":"2025-10-13T07:23:55.440Z"}
+{"level":"info","message":"User data fetched: faizanhameed690@gmail.com","timestamp":"2025-10-13T07:23:55.458Z"}
+{"level":"warn","message":"No bookmarks found for user 1","timestamp":"2025-10-13T07:23:55.695Z"}
+{"ip":"::1","level":"error","message":"No bookmarks found","method":"GET","stack":"Error: No bookmarks found\n    at getMyBookmarks (file:///home/faizcasm/Desktop/zanly/server/src/controllers/bookmark.controller.js:91:17)","statusCode":404,"timestamp":"2025-10-13T07:23:55.696Z","url":"/api/v1/bookmark/get"}
+{"level":"warn","message":"No bookmarks found for user 1","timestamp":"2025-10-13T07:23:55.707Z"}
+{"ip":"::1","level":"error","message":"No bookmarks found","method":"GET","stack":"Error: No bookmarks found\n    at getMyBookmarks (file:///home/faizcasm/Desktop/zanly/server/src/controllers/bookmark.controller.js:91:17)","statusCode":404,"timestamp":"2025-10-13T07:23:55.708Z","url":"/api/v1/bookmark/get"}
+{"level":"info","message":"User logged out: faizanhameed690@gmail.com","timestamp":"2025-10-13T07:24:15.242Z"}
+{"ip":"::1","level":"error","message":"Authentication token not found","method":"GET","stack":"Error: Authentication token not found\n    at authMiddleware (file:///home/faizcasm/Desktop/zanly/server/src/middlewares/auth.middleware.js:15:19)\n    at Layer.handleRequest (/home/faizcasm/Desktop/zanly/server/node_modules/router/lib/layer.js:152:17)\n    at next (/home/faizcasm/Desktop/zanly/server/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/faizcasm/Desktop/zanly/server/node_modules/router/lib/route.js:117:3)\n    at handle (/home/faizcasm/Desktop/zanly/server/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/faizcasm/Desktop/zanly/server/node_modules/router/lib/layer.js:152:17)\n    at /home/faizcasm/Desktop/zanly/server/node_modules/router/index.js:295:15\n    at processParams (/home/faizcasm/Desktop/zanly/server/node_modules/router/index.js:582:12)\n    at next (/home/faizcasm/Desktop/zanly/server/node_modules/router/index.js:291:5)\n    at router.handle (/home/faizcasm/Desktop/zanly/server/node_modules/router/index.js:186:3)","statusCode":401,"timestamp":"2025-10-13T07:24:37.738Z","url":"/api/v1/user/get"}
+{"ip":"::1","level":"error","message":"Authentication token not found","method":"GET","stack":"Error: Authentication token not found\n    at authMiddleware (file:///home/faizcasm/Desktop/zanly/server/src/middlewares/auth.middleware.js:15:19)\n    at Layer.handleRequest (/home/faizcasm/Desktop/zanly/server/node_modules/router/lib/layer.js:152:17)\n    at next (/home/faizcasm/Desktop/zanly/server/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/faizcasm/Desktop/zanly/server/node_modules/router/lib/route.js:117:3)\n    at handle (/home/faizcasm/Desktop/zanly/server/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/faizcasm/Desktop/zanly/server/node_modules/router/lib/layer.js:152:17)\n    at /home/faizcasm/Desktop/zanly/server/node_modules/router/index.js:295:15\n    at processParams (/home/faizcasm/Desktop/zanly/server/node_modules/router/index.js:582:12)\n    at next (/home/faizcasm/Desktop/zanly/server/node_modules/router/index.js:291:5)\n    at router.handle (/home/faizcasm/Desktop/zanly/server/node_modules/router/index.js:186:3)","statusCode":401,"timestamp":"2025-10-13T07:24:37.743Z","url":"/api/v1/user/get"}
+{"accessToken":"ya29.a0AQQ_BDT9Y7TjRbx3ejzGYajp-xPRnS_odq5SH-l-HvnYxlOekOV4VooFVZBxv7_ho5NKkjWTiKUbj23TnCjiM5kZhcr0jGNEzWZMR0Ag3nv9_m2HeQyeiuovkUM5Scjt-ytrb2s-anc2VZlBglK_IkD_rZ32KciXQFjADjEEfuejFqZYdrq7lpEtO0jrpz40gNcalPG6aCgYKAYISARQSFQHGX2MiN_fp69qUzWNR_JGKUlvRFQ0207","email":"faizanhameed690@gmail.com","image":"https://lh3.googleusercontent.com/a/ACg8ocJNezmPuPTLe-fI4xdR_uzi-wv30QIp9iGS65ktXANla_veBZUK=s96-c","level":"info","message":"OAuth login for existing user","name":"Faizan Hameed Tantray","timestamp":"2025-10-13T07:24:42.845Z"}
+{"level":"info","message":"User data fetched: faizanhameed690@gmail.com","timestamp":"2025-10-13T07:24:43.237Z"}
+{"level":"info","message":"User data fetched: faizanhameed690@gmail.com","timestamp":"2025-10-13T07:24:43.241Z"}
+{"level":"warn","message":"No bookmarks found for user 1","timestamp":"2025-10-13T07:24:43.350Z"}
+{"ip":"::1","level":"error","message":"No bookmarks found","method":"GET","stack":"Error: No bookmarks found\n    at getMyBookmarks (file:///home/faizcasm/Desktop/zanly/server/src/controllers/bookmark.controller.js:91:17)","statusCode":404,"timestamp":"2025-10-13T07:24:43.352Z","url":"/api/v1/bookmark/get"}
+{"level":"warn","message":"No bookmarks found for user 1","timestamp":"2025-10-13T07:24:43.391Z"}
+{"ip":"::1","level":"error","message":"No bookmarks found","method":"GET","stack":"Error: No bookmarks found\n    at getMyBookmarks (file:///home/faizcasm/Desktop/zanly/server/src/controllers/bookmark.controller.js:91:17)","statusCode":404,"timestamp":"2025-10-13T07:24:43.391Z","url":"/api/v1/bookmark/get"}
+{"level":"info","message":"Redis conneted","timestamp":"2025-10-13T07:24:51.073Z"}
+{"level":"info","message":"Database connected","timestamp":"2025-10-13T07:24:51.083Z"}
+{"level":"info","message":"Cron job started: Sending request to http://localhost:4000 every 10 minutes","timestamp":"2025-10-13T07:24:51.121Z"}
+{"level":"info","message":"Server started at port","timestamp":"2025-10-13T07:24:51.122Z"}
+{"level":"info","message":"http://localhost:4000","timestamp":"2025-10-13T07:24:51.122Z"}
+{"level":"info","message":"User data fetched: faizanhameed690@gmail.com","timestamp":"2025-10-13T07:24:57.307Z"}
+{"level":"info","message":"User data fetched: faizanhameed690@gmail.com","timestamp":"2025-10-13T07:24:57.334Z"}
+{"level":"warn","message":"No bookmarks found for user 1","timestamp":"2025-10-13T07:24:57.542Z"}
+{"ip":"::1","level":"error","message":"No bookmarks found","method":"GET","stack":"Error: No bookmarks found\n    at getMyBookmarks (file:///home/faizcasm/Desktop/zanly/server/src/controllers/bookmark.controller.js:91:17)","statusCode":404,"timestamp":"2025-10-13T07:24:57.543Z","url":"/api/v1/bookmark/get"}
+{"level":"warn","message":"No bookmarks found for user 1","timestamp":"2025-10-13T07:24:57.551Z"}
+{"ip":"::1","level":"error","message":"No bookmarks found","method":"GET","stack":"Error: No bookmarks found\n    at getMyBookmarks (file:///home/faizcasm/Desktop/zanly/server/src/controllers/bookmark.controller.js:91:17)","statusCode":404,"timestamp":"2025-10-13T07:24:57.551Z","url":"/api/v1/bookmark/get"}
+{"level":"info","message":"User data fetched: faizanhameed690@gmail.com","timestamp":"2025-10-13T07:25:07.263Z"}
+{"level":"info","message":"User data fetched: faizanhameed690@gmail.com","timestamp":"2025-10-13T07:25:07.268Z"}
+{"level":"info","message":"User data fetched: faizanhameed690@gmail.com","timestamp":"2025-10-13T07:25:16.680Z"}
+{"level":"info","message":"User data fetched: faizanhameed690@gmail.com","timestamp":"2025-10-13T07:25:16.683Z"}
+{"level":"info","message":"User data fetched: faizanhameed690@gmail.com","timestamp":"2025-10-13T07:25:18.891Z"}
+{"level":"info","message":"User data fetched: faizanhameed690@gmail.com","timestamp":"2025-10-13T07:25:18.894Z"}
+{"level":"info","message":"User data fetched: faizanhameed690@gmail.com","timestamp":"2025-10-13T07:25:20.323Z"}
+{"level":"info","message":"User data fetched: faizanhameed690@gmail.com","timestamp":"2025-10-13T07:25:20.327Z"}
+{"level":"info","message":"Redis conneted","timestamp":"2025-10-13T07:26:09.850Z"}

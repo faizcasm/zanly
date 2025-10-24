@@ -1,0 +1,43 @@
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-08T08:00:00.032Z"}
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-08T08:10:00.061Z"}
+{"level":"info","message":"Fetched users page 1 from DB","timestamp":"2025-10-08T08:17:39.068Z"}
+{"level":"info","message":"Fetched materials page 1 from DB","timestamp":"2025-10-08T08:17:39.070Z"}
+{"level":"info","message":"Fetched users page 1 from cache","timestamp":"2025-10-08T08:17:39.096Z"}
+{"level":"info","message":"Fetched materials page 1 from cache","timestamp":"2025-10-08T08:17:39.104Z"}
+{"level":"info","message":"Fetched materials page 1 from DB","timestamp":"2025-10-08T08:17:39.129Z"}
+{"level":"info","message":"Fetched materials page 1 from cache","timestamp":"2025-10-08T08:17:39.143Z"}
+{"level":"warn","message":"No bookmarks found for user 1","timestamp":"2025-10-08T08:17:43.150Z"}
+{"ip":"::1","level":"error","message":"No bookmarks found","method":"GET","stack":"Error: No bookmarks found\n    at getMyBookmarks (file:///C:/Users/HP/OneDrive/Desktop/zanly/server/src/controllers/bookmark.controller.js:91:17)","statusCode":404,"timestamp":"2025-10-08T08:17:43.152Z","url":"/api/v1/bookmark/get"}
+{"level":"warn","message":"No bookmarks found for user 1","timestamp":"2025-10-08T08:17:43.175Z"}
+{"ip":"::1","level":"error","message":"No bookmarks found","method":"GET","stack":"Error: No bookmarks found\n    at getMyBookmarks (file:///C:/Users/HP/OneDrive/Desktop/zanly/server/src/controllers/bookmark.controller.js:91:17)","statusCode":404,"timestamp":"2025-10-08T08:17:43.176Z","url":"/api/v1/bookmark/get"}
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-08T08:20:00.048Z"}
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-08T08:30:00.080Z"}
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-08T08:40:00.076Z"}
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-08T08:50:00.030Z"}
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-08T09:00:00.048Z"}
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-08T09:10:00.052Z"}
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-08T09:20:00.040Z"}
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-08T09:30:00.028Z"}
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-08T09:40:00.033Z"}
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-08T09:50:00.043Z"}
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-08T10:00:00.062Z"}
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-08T10:10:00.038Z"}
+{"level":"info","message":"User data fetched: faizanhameed690@gmail.com","timestamp":"2025-10-08T10:13:51.718Z"}
+{"level":"info","message":"User data fetched: faizanhameed690@gmail.com","timestamp":"2025-10-08T10:13:51.733Z"}
+{"level":"info","message":"Fetched users page 1 from DB","timestamp":"2025-10-08T10:13:51.865Z"}
+{"level":"info","message":"Fetched users page 1 from cache","timestamp":"2025-10-08T10:13:51.881Z"}
+{"level":"info","message":"Fetched materials page 1 from DB","timestamp":"2025-10-08T10:13:52.010Z"}
+{"level":"info","message":"Fetched materials page 1 from cache","timestamp":"2025-10-08T10:13:52.017Z"}
+{"level":"info","message":"Fetched materials page 1 from DB","timestamp":"2025-10-08T10:13:52.116Z"}
+{"level":"info","message":"Fetched materials page 1 from cache","timestamp":"2025-10-08T10:13:52.127Z"}
+{"level":"warn","message":"No bookmarks found for user 1","timestamp":"2025-10-08T10:13:54.938Z"}
+{"ip":"::1","level":"error","message":"No bookmarks found","method":"GET","stack":"Error: No bookmarks found\n    at getMyBookmarks (file:///C:/Users/HP/OneDrive/Desktop/zanly/server/src/controllers/bookmark.controller.js:91:17)","statusCode":404,"timestamp":"2025-10-08T10:13:54.940Z","url":"/api/v1/bookmark/get"}
+{"level":"warn","message":"No bookmarks found for user 1","timestamp":"2025-10-08T10:13:54.955Z"}
+{"ip":"::1","level":"error","message":"No bookmarks found","method":"GET","stack":"Error: No bookmarks found\n    at getMyBookmarks (file:///C:/Users/HP/OneDrive/Desktop/zanly/server/src/controllers/bookmark.controller.js:91:17)","statusCode":404,"timestamp":"2025-10-08T10:13:54.956Z","url":"/api/v1/bookmark/get"}
+{"level":"info","message":"Zanly AI: Received prompt - whats today date","timestamp":"2025-10-08T10:14:03.605Z"}
+{"level":"info","message":"Zanly AI: Generated reply for prompt - whats today date","timestamp":"2025-10-08T10:14:07.113Z"}
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-08T10:20:00.025Z"}
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-08T10:30:00.028Z"}
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-08T10:40:00.068Z"}
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-08T10:50:00.071Z"}
+{"level":"info","message":"Cron job success: http://localhost:4000 - Status: 200","timestamp":"2025-10-08T11:00:00.057Z"}
