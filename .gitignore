@@ -1,5 +1,9 @@
 /server/node_modules
 /server/.env
-
+/server/logs
+/server/src/services/logs
+/server/src/services/uploads
+/client/.env
+/client/node_modules
 /server/src/generated/prisma
 server/logs/
