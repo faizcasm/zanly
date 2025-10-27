@@ -86,11 +86,12 @@ const oauthCallback = async (req, res, next) => {
     name:savedUser.name,
     emailType:'Login'
   });
+  
   res.cookie('token', token, cookieOptions);
   if (savedUser.role === 'ADMIN') {
-    res.redirect(`${process.env.CORS_ORIGIN}/admin`);
+    return res.redirect(`${process.env.CORS_ORIGIN}/admin`);
   }
-  res.redirect(`${process.env.CORS_ORIGIN}/dashboard`);
+  return res.redirect(`${process.env.CORS_ORIGIN}/dashboard`);
 };
 
 export { oauthCallback, passport };

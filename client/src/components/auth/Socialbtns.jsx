@@ -2,11 +2,11 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 function SocialButtons() {
   const URL = import.meta.env.VITE_API_URL
   const github = ()=>{
-   window.location.href = `${URL}/github`
+   window.location.replace = `${URL}/github`
   }
 
   const google = ()=>{
-    window.location.href = `${URL}/google`
+    window.location.replace = `${URL}/google`
   }
   return (
     <div className="w-full">
