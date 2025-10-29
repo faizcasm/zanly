@@ -29,7 +29,7 @@ const logger = createLogger({
     dailyRotateFileTransport,
     errorRotateFileTransport,
     new LokiTransport({
-      host: 'http://192.168.1.9:3100', // Loki container in Docker network
+      host: process.env.LOKI_URL, // Loki container in Docker network
       json: true,
       labels: { app: 'nodejs_app' }
     }),
