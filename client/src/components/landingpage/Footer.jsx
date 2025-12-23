@@ -236,7 +236,7 @@ const Footer = () => {
             </Motion.div>
             <span>by</span>
             <Motion.a
-              href="https://faizcasm.in"
+              href="https://faizcasm.me"
               target="_blank"
               rel="nofollow"
               className="ml-1 text-blue-400 hover:text-blue-300 transition-colors duration-200"
@@ -252,3 +252,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
